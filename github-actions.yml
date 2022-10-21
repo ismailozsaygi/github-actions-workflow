@@ -1,2 +1,1 @@
-- name: Trigger Jenkins Job
-  uses: appleboy/jenkins-action@0.0.1
+
