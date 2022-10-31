@@ -1,24 +1,38 @@
-name: Your GHA
-on:
-  pull_request:
-    types: [opened, synchronize]
+# This workflow will triage pull requests and apply a label based on the
+# paths that are modified in the pull request.
+#
+# To use this workflow, you will need to set up a .github/labeler.yml
+# file with configuration.  For more information, see:
+# https://github.com/actions/labeler
+
+name: Labeler
+on: [pull_request]
 
 jobs:
-  your_job_name: GitHub Actions
-    name: Trigger Jenkins Job
+  label:
+
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
     steps:
-      - name: Trigger your-awesome-job-name job
-        uses: toptal/jenkins-job-trigger-action@master
-        with:
-          jenkins_url: "http://localhost:8080/"
-          jenkins_user: "iozsaygi"
-          jenkins_token: "1134cc39badbe23b682fcd2a77c82ee139"
-          proxy: ${{ secrets.JENKINS_PROXY }}
-          job_name: "GitHub Actions"
-          job_params: |
-            {
-              "param_1": "value_1",
-              "param_2": "value_2"
-            }
-          job_timeout: "3600" # Default 30 sec. (optional)
+    - name: Jenkins-Action
+      # You may pin to the exact commit or the version.
+      # uses: joshlk/jenkins-githubaction@8ef510cf2dfb3affe8cbdfef1898b23c28847f39
+      uses: joshlk/jenkins-githubaction@V0.0.1
+      with:
+        # Jenkins URL including http/https protocol
+        url: https://jenkins.zeus.panteon.games
+        # Jenkins job name to build
+        job_name: Midcore-KoPDevelopmentPR-Android
+        # Jenkins username
+        username: CagkanCaglayanel
+        # Jenkins API token
+        api_token: 11108264d3fb98268a968d0e29de604002
+        # Should the runner wait for the build to finish and provide ok status
+        wait: True
+        # Timeout in seconds for build to complete
+        timeout: 1800
+        # How frequently in seconds to query Jenkins for build status
+        interval: 10
