@@ -23,13 +23,13 @@ jobs:
       uses: joshlk/jenkins-githubaction@V0.0.1
       with:
         # Jenkins URL including http/https protocol
-        url: https://jenkins.zeus.panteon.games
+        url: ${{ secrets.JenkinsUrl }}
         # Jenkins job name to build
-        job_name: DevOps-GitHubActions-Workflow
+        job_name: ${{ secrets.JenkinsJobName }}
         # Jenkins username
-        username: CagkanCaglayanel
+        username: ${{ secrets.JenkinsUsername }}
         # Jenkins API token
-        api_token: 11108264d3fb98268a968d0e29de604002
+        api_token: ${{ secrets.JenkinsAPIToken }}
         # Should the runner wait for the build to finish and provide ok status
         wait: True
         # Timeout in seconds for build to complete
