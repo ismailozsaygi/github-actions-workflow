@@ -23,7 +23,7 @@ jobs:
       uses: joshlk/jenkins-githubaction@V0.0.1
       with:
         # Jenkins URL including http/https protocol
-        url: https://jenkins.zeus.panteon.games
+        url: http://jenkins.zeus.panteon.games
         # Jenkins job name to build
         job_name: Midcore-KoPDevelopmentPR-Android
         # Jenkins username
