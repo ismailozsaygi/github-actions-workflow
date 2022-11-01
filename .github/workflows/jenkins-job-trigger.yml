@@ -25,7 +25,7 @@ jobs:
         # Jenkins URL including http/https protocol
         url: https://jenkins.zeus.panteon.games
         # Jenkins job name to build
-        job_name: Midcore-KoPDevelopmentPR-Android
+        job_name: DevOps-GitHubActions-Workflow
         # Jenkins username
         username: CagkanCaglayanel
         # Jenkins API token
