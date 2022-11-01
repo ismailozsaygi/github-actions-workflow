@@ -37,4 +37,4 @@ jobs:
         # How frequently in seconds to query Jenkins for build status
         interval: 10
         # Specify build parameters with a .json format
-        # parameters: '{"IL2CPP":"true"}'
+        # parameters: '{"IL2CPP":"false"}'
