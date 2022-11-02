@@ -6,7 +6,7 @@
 # https://github.com/actions/labeler
 
 name: Labeler
-on: [pull_request]
+on: [push]
 
 jobs:
   label:
@@ -23,16 +23,18 @@ jobs:
       uses: joshlk/jenkins-githubaction@V0.0.1
       with:
         # Jenkins URL including http/https protocol
-        url: https://jenkins.zeus.panteon.games
+        url: ${{ secrets.JenkinsUrl }}
         # Jenkins job name to build
-        job_name: Midcore-KoPDevelopmentPR-Android
+        job_name: ${{ secrets.JenkinsJobName }}
         # Jenkins username
-        username: CagkanCaglayanel
+        username: ${{ secrets.JenkinsUsername }}
         # Jenkins API token
-        api_token: 11108264d3fb98268a968d0e29de604002
+        api_token: ${{ secrets.JenkinsAPIToken }}
         # Should the runner wait for the build to finish and provide ok status
         wait: True
         # Timeout in seconds for build to complete
         timeout: 1800
         # How frequently in seconds to query Jenkins for build status
         interval: 10
+        # Specify build parameters with a .json format
+        parameters: '{"IL2CPP":"false"}'
