@@ -1,40 +1,15 @@
-# This workflow will triage pull requests and apply a label based on the
-# paths that are modified in the pull request.
-#
-# To use this workflow, you will need to set up a .github/labeler.yml
-# file with configuration.  For more information, see:
-# https://github.com/actions/labeler
-
-name: Labeler
+name: trigger jenkins job
 on: [push]
-
 jobs:
-  label:
 
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-
     steps:
-    - name: Jenkins-Action
-      # You may pin to the exact commit or the version.
-      # uses: joshlk/jenkins-githubaction@8ef510cf2dfb3affe8cbdfef1898b23c28847f39
-      uses: joshlk/jenkins-githubaction@V0.0.1
+    - name: trigger single Job
+      uses: appleboy/jenkins-action@master
       with:
-        # Jenkins URL including http/https protocol
-        url: ${{ secrets.JenkinsUrl }}
-        # Jenkins job name to build
-        job_name: ${{ secrets.JenkinsJobName }}
-        # Jenkins username
-        username: ${{ secrets.JenkinsUsername }}
-        # Jenkins API token
-        api_token: ${{ secrets.JenkinsAPIToken }}
-        # Should the runner wait for the build to finish and provide ok status
-        wait: True
-        # Timeout in seconds for build to complete
-        timeout: 1800
-        # How frequently in seconds to query Jenkins for build status
-        interval: 10
-        # Specify build parameters with a .json format
-        # parameters: '{"IL2CPP":"true"}'
+        url: "https://jenkins.zeus.panteon.games/"
+        user: ${{ secrets.JenkinsUsername }}
+        token: ${{ secrets.JenkinsAPIToken }}
+        job: "Midcore-KoPDevelopmentPR-Android"
