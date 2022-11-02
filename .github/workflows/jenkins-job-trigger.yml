@@ -12,4 +12,4 @@ jobs:
         url: "https://jenkins.zeus.panteon.games/"
         user: ${{ secrets.JenkinsUsername }}
         token: ${{ secrets.JenkinsAPIToken }}
-        job: "DevOps-DiscordPipeline1"
+        job: "DevOps-DiscordPipeline"
